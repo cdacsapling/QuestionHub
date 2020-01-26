@@ -1,0 +1,55 @@
+<section>
+    <title>Module Content Page</title>
+  </section>
+  <div class="col-sm-9" *ngIf="msg_show_value">
+    {{msg_to_display}}
+  </div>
+
+<div class="col-sm-9">
+        <h2>module content list of questions</h2>
+        <!-- <a [routerLink]="[ './askQuestion']">askQuestion</a> -->
+         <ul style="list-style-type: none;" >
+         
+          <li *ngFor = "let item of questionListObject; let id=index"> 
+               {{item.question_desc}}
+              &nbsp; &nbsp;
+              <a href="javascript: void(0);" (click)="toggle(item.question_id)" >Give Answer</a> &nbsp; &nbsp; 
+              <a href="javascript: void(0);" (click)="getAnswerList(item.question_id)" >View Answer</a> 
+              <form *ngIf="get_active_question_id==item.question_id" name="form" (ngSubmit)="f.form.valid && submitAnswer()"  #f="ngForm" novalidate>
+                  <textarea  class="form-control" aria-label="With textarea" [(ngModel)]="get_answer_desc" 
+                   #ansDesc = 'ngModel'
+                  placeholder="Enter Your Question...."
+                  [ngClass]="{'is-invalid':f.submitted && ansDesc.invalid}"
+                   name="ansDesc" required ansDesc></textarea>
+                   <div *ngIf="f.submitted && ansDesc.invalid" class="invalid-feedback">
+                      <div *ngIf="ansDesc.errors.required" class="error-message-red">Answer description is 
+                        required</div>
+                     </div>
+                   
+               
+                <input type="submit" class="btn btn-primary" value="Submit Answer"/>
+              </form>
+              <div *ngIf="(get_active_question_id)==item.question_id+99" >
+                  <ul style="list-style-type: none;" >
+                    
+                      <p style="font-weight: bold;" *ngIf="answerListObject.length != 0">Question_description : Asked Date : PNR Number</p> 
+                         
+                      <li *ngFor = "let item of answerListObject; let id=index">
+                         {{item.answer_desc}} &nbsp; {{item.ans_create_date}} : {{item.user_sr_id}}
+                        </li>
+                        <li *ngIf="answerListObject.length == 0">answer not available for this question.</li>
+                    </ul>
+               
+                
+              </div>
+
+
+          </li>
+          
+      </ul>
+        
+
+
+
+   
+ </div>

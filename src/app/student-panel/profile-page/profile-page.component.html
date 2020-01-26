@@ -1,0 +1,92 @@
+<section>
+    <title>Student Profile Page</title>
+  </section>
+
+<!--
+<router-outlet></router-outlet>-->
+ <!-- edit form column -->
+ <div class="col-sm-9 personal-info">
+  <div class="alert alert-info alert-dismissable hidden">
+    <a class="panel-close close" data-dismiss="alert">×</a> 
+    <i class="fa fa-coffee"></i>
+    This is an <strong>.alert</strong>. Use this to show important messages to the user.
+  </div>
+  <h3>Personal info</h3>
+  
+  <!-- Profile Form -->
+  <form name="form" (ngSubmit)="f1.form.valid && updateProf()"  #f1="ngForm" novalidate> 
+      <div class="form-group"> 
+          <label class="col-lg-3 control-label">Name:</label>
+          <div class="col-lg-9">
+            <input type="text" class="form-control" [(ngModel)]="profileObject.user_name" #std_name="ngModel"
+            [ngClass]="{'is-invalid':f1.submitted && std_name.invalid}" name="std_name" placeholder="Enter name..." required std_name/>
+           
+           <div *ngIf="f1.submitted && std_name.invalid" class="invalid-feedback">
+              <div *ngIf="std_name.errors.required" class="error-message-red">Name is 
+                required</div>
+            </div> 
+          </div> 
+      </div> 
+      
+      <div class="form-group"> 
+          <label class="col-lg-3 control-label">Dept:</label>
+          <div class="col-lg-9">
+            <input type="text" class="form-control" [(ngModel)]="profileObject.user_dept" #std_dept="ngModel"
+            [ngClass]="{'is-invalid':f1.submitted && std_dept.invalid}" name="std_dept" placeholder="Enter name..." required std_dept/>
+           
+           <div *ngIf="f1.submitted && std_dept.invalid" class="invalid-feedback">
+              <div *ngIf="std_dept.errors.required" class="error-message-red">Dept is 
+                required</div>
+            </div>
+          </div>  
+      </div> 
+     
+      <div class="form-group"> 
+          <label class="col-lg-3 control-label">Email:</label>
+          <div class="col-lg-9">
+            <input type="email" class="form-control" [(ngModel)]="profileObject.user_email" #std_email="ngModel"
+            [ngClass]="{'is-invalid':f1.submitted && std_email.invalid}" name="std_email" placeholder="Enter name..." required std_email/>
+           
+           <div *ngIf="f1.submitted && std_email.invalid" class="invalid-feedback">
+              <div *ngIf="std_email.errors.required" class="error-message-red">Email is 
+                required</div>
+             </div>
+            </div>  
+      </div> 
+
+      <div class="form-group"> 
+          <label class="col-lg-3 control-label">Mobile Number:</label>
+          <div class="col-lg-9">
+            <input type="number" class="form-control" [(ngModel)]="profileObject.user_mobile_number" #std_mobile="ngModel"
+            [ngClass]="{'is-invalid':f1.submitted && std_mobile.invalid}" name="std_mobile" placeholder="Enter name..." required std_mobile/>
+           
+           <div *ngIf="f1.submitted && std_mobile.invalid" class="invalid-feedback">
+              <div *ngIf="std_mobile.errors.required" class="error-message-red">Mobile is 
+                required</div>
+             </div> 
+            </div> 
+      </div> 
+
+      <div class="form-group"> 
+          <label class="col-lg-3 control-label">Serial Number:</label>
+          <div class="col-lg-9">
+            <input type="number" class="form-control" readonly [(ngModel)] = "profileObject.user_login_id"
+             name="std_number" placeholder="Enter Serial Number..."/>
+           </div> 
+          
+      </div> 
+      <div class="form-group"> 
+          <label class="col-lg-3 control-label">password</label>
+          <div class="col-lg-9">
+            <input type="password" class="form-control" readonly [(ngModel)] = "profileObject.user_password"
+             name="std_password" placeholder="Enter Serial Number..."/>
+           </div> 
+           
+      </div> 
+      
+      <div class="form-group"> 
+        <input type="submit" class="btn btn-primary" value="Save Changes"/>
+        </div> 
+     
+    </form>
+</div>

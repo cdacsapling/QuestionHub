@@ -1,0 +1,22 @@
+
+          <div class="col-sm-3">
+            <h2>Module</h2>
+            
+            <ul class="nav nav-pills nav-stacked">
+              <li *ngFor = "let item of moduleListObject; let id=index"> 
+                   <a  (click)="getQuesList(item.moduleId)">{{item.moduleName}}</a>
+                  
+               </li>
+           
+           </ul>
+            <hr class="hidden-sm hidden-md hidden-lg">
+            <div *ngIf="errorVar">{{errorMessage}} </div>
+          </div>
+        
+      
+  <!--   
+<a href='studentPage/2/ModuleContent'>body-content is here</a>
+
+<a [routerLink]="['./ModuleContent']">body-content is here</a>
+<a [routerLink]="['./ModuleContent', id]">body-content is here</a>
+-->
